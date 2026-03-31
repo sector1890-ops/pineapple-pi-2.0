@@ -11,3 +11,6 @@
 - 1x HDMI 2.0a
 - 1x 3.5mm Audio & TVE jack socket
 - 1x GbE Ethernet port
+
+## Price
+$40

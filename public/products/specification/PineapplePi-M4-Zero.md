@@ -12,3 +12,6 @@
 - 1x 24-pin FPC connector
 - 1x USB2.0
 - 1x 100Mbps Ethernet
+
+## Price
+$20

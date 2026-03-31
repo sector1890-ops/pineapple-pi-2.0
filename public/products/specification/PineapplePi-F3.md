@@ -10,3 +10,6 @@
 - 1x USB 3.0 + 2x USB 2.0 interfaces
 - 12x UART serial ports
 - Operating temperature range: -40°C to 85°C
+
+## Price
+$20

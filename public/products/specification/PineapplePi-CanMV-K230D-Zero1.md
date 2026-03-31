@@ -8,3 +8,6 @@
 - Wifi onboard
 - 40 Pin GPIO
 - ADC audio
+
+## Price
+$10

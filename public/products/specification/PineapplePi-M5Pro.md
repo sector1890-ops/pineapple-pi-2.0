@@ -8,3 +8,6 @@
 - VPU/Encoding & Decoding
 - RAM: 8/16GB 32-bit LPDDR4x, default is 8GB. RK3576 supports a maximum of 16GB.
 - Flash: 32/64/128GB eMMC, default is 64GB eMMC.
+
+## Price
+$100

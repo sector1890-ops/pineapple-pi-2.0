@@ -6,3 +6,6 @@
 - MCU: ARM Cortex-M4
 - AI Framework: Caffe/Tensorflow/PyTorch/TFLite/DarkNet or ONNX
 - AI Moduels: Yolo-v5/V8/V10..etc,More than 50 Models.
+
+## Price
+$30

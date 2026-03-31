@@ -8,3 +8,6 @@
 - 40 PIN GPIO,It includes UART, SPI, I2C, IO etc
 - 100M LAN
 - IEEE 802.3af PoE standard PoE module support
+
+## Price
+$80

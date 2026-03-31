@@ -15,3 +15,6 @@
 - 2x USB 3.0 interface
 - 2x MIPI CSI camera interface
 - 8/16/32GB(LPDDR4x) ram options and 64/128G eMMC options
+
+## Price
+$80

@@ -8,3 +8,6 @@
 - Memory 512MB DDR3L 
 - Storage 512MB NAND ,Supports MicroSD card expansion 
 - Networking 2 × 100M Ethernet 
+
+## Price
+$30
