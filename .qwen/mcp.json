@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "./.qwen/memory-store.json"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/sergey/Projects/Next_Projects/consulting-site"
+      ],
+      "env": {
+        "ALLOWED_PATHS": "/home/sergey/Projects/Next_Projects/consulting-site"
+      }
+    }
+  }
+}
