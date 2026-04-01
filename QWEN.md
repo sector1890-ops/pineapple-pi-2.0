@@ -11,6 +11,7 @@
 | **Framework** | Next.js 16.2.1 (App Router) |
 | **Language** | TypeScript 5.x |
 | **UI Library** | React 19.2.4 |
+| **Component Library** | Chakra-UI 3.34.0 |
 | **Styling** | Tailwind CSS 4.x |
 | **State Management** | Zustand 5.x |
 | **Fonts** | Geist Sans + Geist Mono (via `next/font`) |
