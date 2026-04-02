@@ -16,6 +16,7 @@
 | **State Management** | Zustand 5.x |
 | **Fonts** | Geist Sans + Geist Mono (via `next/font`) |
 | **Linting** | ESLint 9.x with `eslint-config-next` |
+| **Testing** | Jest 30.x |
 
 ### Project Structure
 
@@ -28,9 +29,11 @@ pineapple-pi-2.0/
 │       └── globals.css      # Global styles with Tailwind
 ├── public/                  # Static assets
 ├── .next/                   # Build output (generated)
+├── coverage/                # Test coverage reports (generated)
 ├── node_modules/            # Dependencies (generated)
 ├── package.json             # Project config & scripts
 ├── tsconfig.json            # TypeScript configuration
+├── jest.config.ts           # Jest configuration
 ├── next.config.ts           # Next.js configuration
 ├── eslint.config.mjs        # ESLint configuration
 ├── postcss.config.mjs       # PostCSS configuration
@@ -68,6 +71,13 @@ npm run start    # Start production server
 npm run lint
 ```
 
+### Testing
+
+```bash
+npm run test           # Run tests
+npm run test:watch     # Run tests in watch mode
+```
+
 ## Development Conventions
 
 ### Code Style
@@ -81,12 +91,13 @@ npm run lint
 - Components: `PascalCase.tsx`
 - Utilities: `camelCase.ts`
 - Styles: Use Tailwind utility classes inline
+- Tests: `*.test.ts` or `*.test.tsx`
 
 ### Testing
 
-No testing framework configured yet. Consider adding:
-- Jest + React Testing Library for unit tests
-- Playwright for E2E tests
+- **Framework**: Jest 30.x
+- **Test Files**: Located alongside source code (`*.test.ts` / `*.test.tsx`)
+- **Coverage**: Reports generated in `coverage/` directory
 
 ### Git
 
@@ -124,3 +135,4 @@ Uses v4 syntax with `@theme inline` for custom variables:
 - [Tailwind CSS v4 Docs](https://tailwindcss.com/docs)
 - [Zustand Documentation](https://zustand-demo.pmnd.rs/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Jest Documentation](https://jestjs.io/docs/getting-started)
