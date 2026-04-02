@@ -136,3 +136,6 @@ Uses v4 syntax with `@theme inline` for custom variables:
 - [Zustand Documentation](https://zustand-demo.pmnd.rs/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Jest Documentation](https://jestjs.io/docs/getting-started)
+
+## Qwen Added Memories
+- Pineapple Pi 2.0 архитектура: SSG для товаров, Zustand для корзины/избранного с persist в localStorage, Chakra UI с teal акцентом, gray-matter+marked для парсинга Markdown, моковые API /api/feedback и /api/order
