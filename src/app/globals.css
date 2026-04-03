@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* Chakra UI base styles */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --chakra-colors-background: #ffffff;
+    --chakra-colors-foreground: #171717;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --chakra-colors-background: #0a0a0a;
+      --chakra-colors-foreground: #ededed;
+    }
+  }
+
+  body {
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Theme tokens */
+@theme inline {
+  --color-background: var(--chakra-colors-background);
+  --color-foreground: var(--chakra-colors-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--chakra-colors-teal-500, #319795);
+  --color-accent-hover: var(--chakra-colors-teal-600, #285e61);
+  --color-favorite: var(--chakra-colors-red-500, #e53e3e);
 }

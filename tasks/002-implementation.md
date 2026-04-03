@@ -43,19 +43,19 @@
 
 ### Задачи
 
-- [ ] 1.1 Установить зависимости: gray-matter, marked, lucide-react
-- [ ] 1.2 Настроить Chakra UI провайдер в app/layout.tsx
+- [x] 1.1 Установить зависимости: gray-matter, marked, lucide-react
+- [x] 1.2 Настроить Chakra UI провайдер в app/layout.tsx
   - Добавить ChakraProvider
   - Настроить ColorModeScript
   - Подключить кастомную тему (teal акцент)
-- [ ] 1.3 Создать файл темы (src/app/theme.ts)
+- [x] 1.3 Создать файл темы (src/app/theme.ts)
   - Расширить дефолтную тему Chakra UI v3
   - Установить teal как акцентный цвет
   - Настроить шрифты (Geist Sans, Geist Mono)
-- [ ] 1.4 Обновить app/globals.css
+- [x] 1.4 Обновить app/globals.css
   - Импортировать стили Chakra
   - Настроить CSS переменные для тем
-- [ ] 1.5 Создать базовую структуру layout.tsx
+- [x] 1.5 Создать базовую структуру layout.tsx
   - Обёртка с ChakraProvider
   - Metadata (title, description)
   - lang="ru"
@@ -470,7 +470,7 @@
 
 | Этап | Статус | Примечания |
 |------|--------|------------|
-| 1. Настройка проекта | ⬜ Не начат | |
+| 1. Настройка проекта | ✅ Завершён | Chakra UI, тема, layout готовы |
 | 2. Парсинг Markdown | ⬜ Не начат | |
 | 3. Zustand Stores | ⬜ Не начат | |
 | 4. Layout компоненты | ⬜ Не начат | |
