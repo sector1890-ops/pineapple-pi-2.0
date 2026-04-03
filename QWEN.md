@@ -139,3 +139,4 @@ Uses v4 syntax with `@theme inline` for custom variables:
 
 ## Qwen Added Memories
 - Pineapple Pi 2.0 архитектура: SSG для товаров, Zustand для корзины/избранного с persist в localStorage, Chakra UI с teal акцентом, gray-matter+marked для парсинга Markdown, моковые API /api/feedback и /api/order
+- Архитектурный план для Pineapple Pi 2.0 готов — созданы docs/plans/001-architecture.md, 001-components.md, 001-data-flow.md и tasks/002-implementation.md с 14 этапами реализации
