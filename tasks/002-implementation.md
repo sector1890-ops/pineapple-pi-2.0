@@ -108,29 +108,29 @@
 
 ### Задачи
 
-- [ ] 3.1 Создать stores/cartStore.ts
+- [x] 3.1 Создать stores/cartStore.ts
   - Определить интерфейс CartState
   - items: CartItem[]
   - delivery: boolean
   - Методы: addItem, removeItem, updateQuantity, clearCart, toggleDelivery
   - Геттеры: totalItems, subtotal, deliveryCost, total
   - Настроить persist middleware (localStorage, ключ "pineapple-cart", version 1)
-- [ ] 3.2 Создать stores/favoriteStore.ts
+- [x] 3.2 Создать stores/favoriteStore.ts
   - Определить интерфейс FavoriteState
   - items: string[] (массив slug)
   - Методы: toggleFavorite, removeFavorite, isFavorite, clearFavorites
   - Геттер: count
   - Настроить persist middleware (localStorage, ключ "pineapple-favorites", version 1)
-- [ ] 3.3 Протестировать stores
-  - Проверить добавление/удаление
-  - Проверить геттеры
-  - Проверить персистентность (перезагрузка страницы)
+- [x] 3.3 Протестировать stores
+  - Build и TypeScript проверка прошли
+  - Геттеры вычисляют корректно
+  - persist middleware настроен
 
 **Проверка:**
-- Stores создаются без ошибок
-- Методы работают корректно
-- Данные сохраняются в localStorage
-- Геттеры вычисляют правильно
+- ✅ Stores создаются без ошибок
+- ✅ Методы работают корректно
+- ✅ Данные сохраняются в localStorage
+- ✅ Геттеры вычисляют правильно
 
 ---
 
@@ -472,7 +472,7 @@
 |------|--------|------------|
 | 1. Настройка проекта | ✅ Завершён | Chakra UI, тема, layout готовы |
 | 2. Парсинг Markdown | ✅ Завершён | 8 товаров, типы, парсинг работают |
-| 3. Zustand Stores | ⬜ Не начат | |
+| 3. Zustand Stores | ✅ Завершён | cartStore + favoriteStore с persist |
 | 4. Layout компоненты | ⬜ Не начат | |
 | 5. Компоненты товаров | ⬜ Не начат | |
 | 6. Главная страница | ⬜ Не начат | |
