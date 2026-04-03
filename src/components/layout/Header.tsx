@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -33,9 +33,15 @@ const navLinks = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
+
+  const pathname = usePathname();
   const totalItems = useCartStore((state) => state.totalItems);
   const favoritesCount = useFavoriteStore((state) => state.count);
 
@@ -43,6 +49,90 @@ export function Header() {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  // До монтирования рендерим упрощённую версию без зависимостей от клиентского состояния
+  if (!isMounted) {
+    return (
+      <Box
+        as="header"
+        bg="bg.default"
+        borderBottomWidth="1px"
+        borderColor="border.default"
+        position="sticky"
+        top={0}
+        zIndex="sticky"
+        shadow="sm"
+        suppressHydrationWarning
+      >
+        <Container maxW="container.xl" py={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Link href="/" passHref>
+              <HStack gap={2} cursor="pointer">
+                <Monitor size={28} color="var(--chakra-colors-teal-500)" />
+                <Text
+                  fontSize="xl"
+                  fontWeight="bold"
+                  color="teal.500"
+                  letterSpacing="tight"
+                >
+                  Pineapple Pi
+                </Text>
+              </HStack>
+            </Link>
+
+            {/* Десктопная навигация - статичная без активных состояний */}
+            <HStack gap={6} display={{ base: "none", lg: "flex" }}>
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} passHref>
+                  <Text
+                    color="text.default"
+                    fontWeight="medium"
+                    _hover={{ color: "teal.500" }}
+                    transition="color 0.2s"
+                    cursor="pointer"
+                  >
+                    {link.label}
+                  </Text>
+                </Link>
+              ))}
+            </HStack>
+
+            {/* Мобильные иконки - без бейджей */}
+            <HStack gap={2} display={{ base: "flex", lg: "none" }}>
+              <Link href="/favorites" passHref>
+                <IconButton
+                  aria-label="Избранное"
+                  variant="ghost"
+                  size="sm"
+                >
+                  <Heart size={20} />
+                </IconButton>
+              </Link>
+
+              <Link href="/cart" passHref>
+                <IconButton
+                  aria-label="Корзина"
+                  variant="ghost"
+                  size="sm"
+                >
+                  <ShoppingCart size={20} />
+                </IconButton>
+              </Link>
+
+              {/* Гамбургер-меню */}
+              <IconButton
+                aria-label="Меню"
+                variant="ghost"
+                size="sm"
+              >
+                <Menu size={20} />
+              </IconButton>
+            </HStack>
+          </Flex>
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -54,6 +144,7 @@ export function Header() {
       top={0}
       zIndex="sticky"
       shadow="sm"
+      suppressHydrationWarning
     >
       <Container maxW="container.xl" py={4}>
         <Flex alignItems="center" justifyContent="space-between">
@@ -84,7 +175,7 @@ export function Header() {
                   cursor="pointer"
                 >
                   {link.label}
-                  {link.href === "/cart" && totalItems > 0 && (
+                  {link.href === "/cart" && isMounted && totalItems > 0 && (
                     <Badge
                       ml={1}
                       colorScheme="teal"
@@ -98,7 +189,7 @@ export function Header() {
                       {totalItems}
                     </Badge>
                   )}
-                  {link.href === "/favorites" && favoritesCount > 0 && (
+                  {link.href === "/favorites" && isMounted && favoritesCount > 0 && (
                     <Badge
                       ml={1}
                       colorScheme="red"
@@ -128,7 +219,7 @@ export function Header() {
                 >
                   <Heart size={20} />
                 </IconButton>
-                {favoritesCount > 0 && (
+                {isMounted && favoritesCount > 0 && (
                   <Badge
                     position="absolute"
                     top="-1"
@@ -159,7 +250,7 @@ export function Header() {
                 >
                   <ShoppingCart size={20} />
                 </IconButton>
-                {totalItems > 0 && (
+                {isMounted && totalItems > 0 && (
                   <Badge
                     position="absolute"
                     top="-1"

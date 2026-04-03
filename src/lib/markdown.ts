@@ -57,8 +57,12 @@ export function parseMarkdownFile(filePath: string): Product | null {
       return null;
     }
 
-    // Формируем путь к изображению
-    const imagePath = `/products/images/${id}.jpg`;
+    // Формируем путь к изображению (ищем .jpg или .png)
+    const imagesDir = path.join(process.cwd(), "public", "products", "images");
+    let imagePath = `/products/images/${id}.jpg`;
+    if (fs.existsSync(path.join(imagesDir, `${id}.png`))) {
+      imagePath = `/products/images/${id}.png`;
+    }
 
     // Краткое описание - первые 3 пункта спецификации
     const shortDescription = specifications.slice(0, 3).join(", ");

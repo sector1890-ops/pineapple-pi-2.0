@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { Box } from "@chakra-ui/react";
+import { ToastRenderer } from "./ToastRenderer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +59,7 @@ export default function RootLayout({
           </Box>
           <Footer />
           <CookieBanner />
+          <ToastRenderer />
         </Providers>
       </body>
     </html>

@@ -1,24 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Flex, Text, Button, Container } from "@chakra-ui/react";
 import { Cookie } from "lucide-react";
 
 const STORAGE_KEY = "pineapple-cookie-consent";
 
-function isCookieConsentGiven(): boolean {
-  if (typeof window === "undefined") return true;
-  const consent = localStorage.getItem(STORAGE_KEY);
-  return consent !== null;
-}
-
 export function CookieBanner() {
-  const [isVisible, setIsVisible] = useState(() => !isCookieConsentGiven());
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+    const consent = localStorage.getItem(STORAGE_KEY);
+    if (!consent) {
+      setIsVisible(true);
+    }
+  }, []);
 
   const handleAccept = () => {
     localStorage.setItem(STORAGE_KEY, "accepted");
     setIsVisible(false);
   };
+
+  // Не рендерим ничего до монтирования (избегаем гидратации)
+  if (!isMounted) {
+    return null;
+  }
 
   if (!isVisible) {
     return null;
