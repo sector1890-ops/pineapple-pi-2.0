@@ -140,30 +140,30 @@
 
 ### Задачи
 
-- [ ] 4.1 Создать components/layout/Header.tsx (Client Component)
+- [x] 4.1 Создать components/layout/Header.tsx (Client Component)
   - Горизонтальная навигация (Главная, О компании, Контакты, Избранное, Корзина)
   - Иконка корзины с Badge (cartCount из cartStore)
   - Иконка избранного с Badge (favoritesCount из favoriteStore)
   - Адаптивность: гамбургер-меню на мобильных (Drawer), горизонтальное меню на lg+
   - Использовать lucide-react иконки
-- [ ] 4.2 Создать components/layout/Footer.tsx (Server Component)
+- [x] 4.2 Создать components/layout/Footer.tsx
   - 3 колонки (SimpleGrid)
   - Навигация, контакты, копирайт
   - Адаптивность: 1 колонка на base, 3 на lg+
-- [ ] 4.3 Создать components/layout/CookieBanner.tsx (Client Component)
-  - Проверка localStorage при монтировании
+- [x] 4.3 Создать components/layout/CookieBanner.tsx (Client Component)
+  - Проверка localStorage при инициализации
   - Показ баннера если нет флага
   - Кнопка "Принять" → сохранение флага, скрытие
   - Фиксированная позиция внизу экрана
-- [ ] 4.4 Обновить app/layout.tsx
+- [x] 4.4 Обновить app/layout.tsx
   - Интегрировать Header и Footer
   - Добавить CookieBanner
 
 **Проверка:**
-- Header отображается на всех страницах
-- Счётчики обновляются при изменении stores
-- Footer адаптивен
-- Cookie баннер показывается один раз
+- ✅ Header отображается на всех страницах
+- ✅ Счётчики обновляются при изменении stores
+- ✅ Footer адаптивен
+- ✅ Cookie баннер показывается один раз
 
 ---
 
@@ -173,12 +173,12 @@
 
 ### Задачи
 
-- [ ] 5.1 Создать components/product/FavoriteIcon.tsx (Client Component)
+- [x] 5.1 Создать components/product/FavoriteIcon.tsx (Client Component)
   - Иконка сердечка (lucide-react HeartIcon)
   - Props: isFavorite, onToggle, size
   - Анимация при клике (scale transition)
   - Цвет: red.500 (active), gray.400 (inactive)
-- [ ] 5.2 Создать components/product/ProductCard.tsx
+- [x] 5.2 Создать components/product/ProductCard.tsx
   - Server Component (интерактив через props callbacks)
   - Props: product, isFavorite, onToggleFavorite, onAddToCart
   - Изображение (next/image)
@@ -187,12 +187,12 @@
   - Кнопка корзины (с onAddToCart)
   - Клик на карточку → переход на /product/[id]
   - e.stopPropagation на иконках
-- [ ] 5.3 Создать components/product/ProductGrid.tsx (Server Component)
+- [x] 5.3 Создать components/product/ProductGrid.tsx
   - Props: products, favorites, onToggleFavorite, onAddToCart
   - SimpleGrid (cols: base=1, md=2, lg=3, xl=4)
   - ProductCard для каждого товара
   - EmptyState если массив пуст
-- [ ] 5.4 Создать components/product/ProductDetails.tsx (Client Component)
+- [x] 5.4 Создать components/product/ProductDetails.tsx (Client Component)
   - Props: product, isFavorite, onToggleFavorite, onAddToCart
   - Полное изображение (next/image, priority)
   - Название, все спецификации (List)
@@ -201,10 +201,10 @@
   - useState для quantity
 
 **Проверка:**
-- ProductCard рендерится в сетке
-- FavoriteIcon анимируется
-- ProductDetails отображает все данные
-- next/image оптимизирует изображения
+- ✅ ProductCard рендерится в сетке
+- ✅ FavoriteIcon анимируется
+- ✅ ProductDetails отображает все данные
+- ✅ next/image оптимизирует изображения
 
 ---
 
@@ -473,8 +473,8 @@
 | 1. Настройка проекта | ✅ Завершён | Chakra UI, тема, layout готовы |
 | 2. Парсинг Markdown | ✅ Завершён | 8 товаров, типы, парсинг работают |
 | 3. Zustand Stores | ✅ Завершён | cartStore + favoriteStore с persist |
-| 4. Layout компоненты | ⬜ Не начат | |
-| 5. Компоненты товаров | ⬜ Не начат | |
+| 4. Layout компоненты | ✅ Завершён | Header, Footer, CookieBanner |
+| 5. Компоненты товаров | ✅ Завершён | ProductCard, ProductGrid, FavoriteIcon, ProductDetails |
 | 6. Главная страница | ⬜ Не начат | |
 | 7. Страница товара SSG | ⬜ Не начат | |
 | 8. Избранное | ⬜ Не начат | |
