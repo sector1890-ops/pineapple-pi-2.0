@@ -17,6 +17,7 @@
 - markdown-parsing
 - nextjs-image
 - localstorage-patterns
+- jest
 
 ---
 
