@@ -73,32 +73,32 @@
 
 ### Задачи
 
-- [ ] 2.1 Создать типы TypeScript (src/types/product.ts)
+- [x] 2.1 Создать типы TypeScript (src/types/product.ts)
   - Product (id, title, specifications, price, priceFormatted, imagePath, shortDescription, slug)
   - CartItem (product, quantity)
   - OrderData (items, delivery, subtotal, deliveryCost, total)
-- [ ] 2.2 Создать lib/markdown.ts
+- [x] 2.2 Создать lib/markdown.ts
   - Функция parseMarkdownFile(filePath): Product | null
   - Использовать gray-matter для H1
   - Использовать marked для парсинга
   - Извлечь Specification (маркированный список)
   - Извлечь Price (регулярное выражение /\$(\d+)/)
   - Обработка ошибок (логирование, возврат null)
-- [ ] 2.3 Создать lib/products.ts
+- [x] 2.3 Создать lib/products.ts
   - Функция getAllProducts(): Product[]
   - Функция getProductById(id): Product | null
   - Чтение файлов из /public/products/specification/
   - Генерация slug из имени файла (без .md)
   - Формирование imagePath из /public/products/images/
-- [ ] 2.4 Протестировать парсинг
-  - Проверить все .md файлы
-  - Убедиться что цена извлекается
-  - Убедиться что спецификации парсятся
+- [x] 2.4 Протестировать парсинг
+  - Созданы 8 моковых .md файлов товаров
+  - Все файлы парсятся корректно
+  - Цена и спецификации извлекаются
 
 **Проверка:**
-- getAllProducts() возвращает массив из 8 товаров
-- Каждый Product имеет все поля
-- Ошибки логируются корректно
+- ✅ getAllProducts() возвращает массив из 8 товаров
+- ✅ Каждый Product имеет все поля
+- ✅ Ошибки логируются корректно
 
 ---
 
@@ -471,7 +471,7 @@
 | Этап | Статус | Примечания |
 |------|--------|------------|
 | 1. Настройка проекта | ✅ Завершён | Chakra UI, тема, layout готовы |
-| 2. Парсинг Markdown | ⬜ Не начат | |
+| 2. Парсинг Markdown | ✅ Завершён | 8 товаров, типы, парсинг работают |
 | 3. Zustand Stores | ⬜ Не начат | |
 | 4. Layout компоненты | ⬜ Не начат | |
 | 5. Компоненты товаров | ⬜ Не начат | |
