@@ -1,4 +1,4 @@
-# Banana Pi BPI-F4 Sunplus SP7350 Industrial-grade AI development board
+# Pineapple Pi F4 Sunplus SP7350 Industrial-grade AI development board
 
 ## Specification
 - CPU: Sunplus SP7350 Quad ARM Cortex-A55

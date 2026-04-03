@@ -214,23 +214,24 @@
 
 ### Задачи
 
-- [ ] 6.1 Обновить app/page.tsx (Server Component)
+- [x] 6.1 Обновить app/page.tsx (Server Component)
   - Вызов getAllProducts()
-  - Передача данных в ProductGrid
-  - Чтение favoriteStore для isFavorite (нужен Client Component wrapper или передача через props)
+  - Передача данных в ProductGrid через HomePageClient
+  - Чтение favoriteStore для isFavorite
   - Обработка onAddToCart (добавление в cartStore с toast)
   - Обработка onToggleFavorite (toggle в favoriteStore с toast)
-- [ ] 6.2 Добавить toast уведомления
+- [x] 6.2 Добавить toast уведомления
   - При добавлении в корзину
   - При добавлении в избранное
-  - Chakra useToast хук
+  - Chakra createToaster
 
 **Проверка:**
-- Главная страница отображает все товары
-- Сетка адаптивна (1-4 колонки)
-- Клик на сердечко обновляет избранное
-- Клик на корзину добавляет товар
-- Переход на страницу товара работает
+- ✅ Главная страница отображает все товары
+- ✅ Сетка адаптивна (1-4 колонки)
+- ✅ Клик на сердечко обновляет избранное
+- ✅ Клик на корзину добавляет товар
+- ✅ Переход на страницу товара работает
+- ✅ Toast уведомления показываются
 
 ---
 
@@ -475,7 +476,7 @@
 | 3. Zustand Stores | ✅ Завершён | cartStore + favoriteStore с persist |
 | 4. Layout компоненты | ✅ Завершён | Header, Footer, CookieBanner |
 | 5. Компоненты товаров | ✅ Завершён | ProductCard, ProductGrid, FavoriteIcon, ProductDetails |
-| 6. Главная страница | ⬜ Не начат | |
+| 6. Главная страница | ✅ Завершён | Каталог + toast уведомления |
 | 7. Страница товара SSG | ⬜ Не начат | |
 | 8. Избранное | ⬜ Не начат | |
 | 9. Корзина | ⬜ Не начат | |

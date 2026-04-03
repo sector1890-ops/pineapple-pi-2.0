@@ -1,4 +1,4 @@
-# Pineapple Pi BPI-P2 Pro IoT board with Rockchip RK3308 design ,with 512M RAM and 8G eMMC,support PoE
+# Pineapple Pi P2 Pro IoT board with Rockchip RK3308 design ,with 512M RAM and 8G eMMC,support PoE
 
 ## Specification
 - CPU: 64bits Quad-core Arm Cortex-A35 Rockchip RK3308

@@ -1,4 +1,4 @@
-# Banana Pi BPI-F3 with SpacemiT K1 8 core RISC-V chip,2/4/8/16G RAM and 2/4/8/16G eMMC
+# Pineapple Pi F3 with SpacemiT K1 8 core RISC-V chip,2/4/8/16G RAM and 2/4/8/16G eMMC
 
 ## Specification
 - 8 core RISC-V chip

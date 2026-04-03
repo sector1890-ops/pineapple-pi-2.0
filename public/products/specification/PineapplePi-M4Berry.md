@@ -1,4 +1,4 @@
-# Banana Pi BPI-M4 Berry with Allwinner H618, 2G RAM,8G eMMC onboard
+# Pineapple Pi M4 Berry with Allwinner H618, 2G RAM,8G eMMC onboard
 
 ## Specification
 - Allwinner H618, Quad-core ARM Cortex™-A53 processor

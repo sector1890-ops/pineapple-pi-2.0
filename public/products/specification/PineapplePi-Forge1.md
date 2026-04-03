@@ -1,4 +1,4 @@
-# Banana Pi BPI-Forge1 Industrial grade SBC with Rockchip RK3506J chip design
+# Pineapple Pi Forge1 Industrial grade SBC with Rockchip RK3506J chip design
 
 ## Specification
 - SOC RockChip RK3506J 

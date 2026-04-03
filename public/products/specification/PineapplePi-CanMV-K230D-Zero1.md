@@ -1,4 +1,4 @@
-# Banana Pi BPI-CanMV-K230D-Zero IoT SBC design with Canaan K230D RISC-V chip
+# Pineapple Pi CanMV-K230D-Zero IoT SBC design with Canaan K230D RISC-V chip
 
 ## Specification
 - Canaan K230D RISC-V chip

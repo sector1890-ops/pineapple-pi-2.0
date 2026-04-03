@@ -1,4 +1,4 @@
-# Banana Pi BPI-M5 Pro with Rockchip RK3576, max support 16G RAM and 128G eMMC
+# Pineapple Pi M5 Pro with Rockchip RK3576, max support 16G RAM and 128G eMMC
 
 ## Specification
 - SoC: Rockchip RK3576

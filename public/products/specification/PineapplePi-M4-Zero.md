@@ -1,4 +1,4 @@
-# Banana Pi BPI-M4 Zero with Allwinner H618 chip design with 2G RAM
+# Pineapple Pi M4 Zero with Allwinner H618 chip design with 2G RAM
 
 ## Specification
 - Allwinner H618, Quad-core ARM Cortex™-A53 processor

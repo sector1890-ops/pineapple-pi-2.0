@@ -1,4 +1,4 @@
-# Banana Pi BPI-M7 with Rockchip RK3588, 8-32G RAM and 64-128G eMMC
+# Pineapple Pi M7 with Rockchip RK3588, 8-32G RAM and 64-128G eMMC
 
 ## Specification
 - PI-co ITX form factor(2.5 inch, 92 x 62mm)
