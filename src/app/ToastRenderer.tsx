@@ -19,7 +19,7 @@ export function ToastRenderer() {
   return (
     <Toaster toaster={toaster}>
       {(toast) => (
-        <Toast.Root>
+        <Toast.Root width="auto">
           <Toast.Title>{toast.title}</Toast.Title>
           <Toast.CloseTrigger />
         </Toast.Root>

@@ -1,13 +1,4 @@
 import Link from "next/link";
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  VStack,
-  Text,
-  Heading,
-  HStack,
-} from "@chakra-ui/react";
 import { Monitor, Mail, Phone, MapPin } from "lucide-react";
 
 const navLinks = [
@@ -28,75 +19,89 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box
-      as="footer"
-      bg="bg.muted"
-      borderTopWidth="1px"
-      borderColor="border.default"
-      mt="auto"
+    <footer
+      style={{
+        background: "var(--chakra-colors-gray-50, #f7f7f7)",
+        borderTop: "1px solid var(--chakra-colors-gray-200, #e2e8f0)",
+        marginTop: "auto",
+      }}
     >
-      <Container maxW="container.xl" py={10}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
+      <div
+        style={{
+          maxWidth: "80rem",
+          marginLeft: "auto",
+          marginRight: "auto",
+          padding: "2.5rem 1rem",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "2rem",
+          }}
+        >
           {/* Навигация */}
-          <VStack align="flex-start" gap={3}>
-            <HStack gap={2}>
-              <Monitor size={20} color="var(--chakra-colors-teal-500)" />
-              <Heading size="sm" color="teal.500">
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "flex-start" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <Monitor size={20} color="var(--chakra-colors-teal-500, #319795)" />
+              <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#319795" }}>
                 Pineapple Pi
-              </Heading>
-            </HStack>
-            <VStack align="flex-start" gap={2}>
+              </span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} passHref>
-                  <Text
-                    color="text.muted"
-                    _hover={{ color: "teal.500" }}
-                    transition="color 0.2s"
-                    cursor="pointer"
-                    fontSize="sm"
-                  >
-                    {link.label}
-                  </Text>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    color: "#6b7280",
+                    fontSize: "0.875rem",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#319795")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7280")}
+                >
+                  {link.label}
                 </Link>
               ))}
-            </VStack>
-          </VStack>
+            </div>
+          </div>
 
           {/* Контакты */}
-          <VStack align="flex-start" gap={3}>
-            <Heading size="sm">Контакты</Heading>
-            <VStack align="flex-start" gap={3}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "flex-start" }}>
+            <h3 style={{ fontSize: "0.875rem", fontWeight: 600, margin: 0 }}>Контакты</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {contacts.map((contact) => (
-                <HStack key={contact.label} gap={2}>
-                  <contact.icon size={16} color="var(--chakra-colors-teal-500)" />
-                  <VStack align="flex-start" gap={0}>
-                    <Text fontSize="xs" color="text.muted">
-                      {contact.label}
-                    </Text>
-                    <Text fontSize="sm">{contact.value}</Text>
-                  </VStack>
-                </HStack>
+                <div key={contact.label} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <contact.icon size={16} color="#319795" />
+                  <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                    <span style={{ fontSize: "0.75rem", color: "#6b7280" }}>{contact.label}</span>
+                    <span style={{ fontSize: "0.875rem" }}>{contact.value}</span>
+                  </div>
+                </div>
               ))}
-            </VStack>
-          </VStack>
+            </div>
+          </div>
 
-          {/* Копирайт */}
-          <VStack align="flex-start" gap={3}>
-            <Heading size="sm">О проекте</Heading>
-            <Text fontSize="sm" color="text.muted">
+          {/* О проекте */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "flex-start" }}>
+            <h3 style={{ fontSize: "0.875rem", fontWeight: 600, margin: 0 }}>О проекте</h3>
+            <p style={{ fontSize: "0.875rem", color: "#6b7280", margin: 0, lineHeight: 1.6 }}>
               Pineapple Pi — каталог микрокомпьютеров для встраиваемых систем,
               IoT и прототипирования. Компактные решения для разработчиков и
               инженеров.
-            </Text>
-          </VStack>
-        </SimpleGrid>
+            </p>
+          </div>
+        </div>
 
-        <Box mt={8} mb={4} borderTopWidth="1px" borderColor="border.default" />
+        <div style={{ marginTop: "2rem", marginBottom: "1rem", borderTop: "1px solid #e2e8f0" }} />
 
-        <Text textAlign="center" fontSize="sm" color="text.muted">
+        <p style={{ textAlign: "center", fontSize: "0.875rem", color: "#6b7280", margin: 0 }}>
           &copy; {currentYear} Pineapple Pi. Все права защищены.
-        </Text>
-      </Container>
-    </Box>
+        </p>
+      </div>
+    </footer>
   );
 }

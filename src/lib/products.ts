@@ -7,7 +7,12 @@ import type { Product } from "@/types/product";
  * Директория с Markdown файлами товаров
  * Используем process.cwd() для получения корня проекта
  */
-const PRODUCTS_DIR = path.join(process.cwd(), "public", "products", "specification");
+const PRODUCTS_DIR = path.join(
+  process.cwd(),
+  "public",
+  "products",
+  "specification",
+);
 
 /**
  * Кэш товаров для предотвращения повторного чтения файлов
@@ -27,12 +32,13 @@ export function getAllProducts(): Product[] {
   try {
     // Проверяем существование директории
     if (!fs.existsSync(PRODUCTS_DIR)) {
-      console.warn(`[getAllProducts] Директория товаров не найдена: ${PRODUCTS_DIR}`);
       return [];
     }
 
     // Читаем все .md файлы из директории
-    const files = fs.readdirSync(PRODUCTS_DIR).filter((file) => file.endsWith(".md"));
+    const files = fs
+      .readdirSync(PRODUCTS_DIR)
+      .filter((file) => file.endsWith(".md"));
 
     // Парсим каждый файл
     const products: Product[] = [];
@@ -65,16 +71,18 @@ export function getAllProducts(): Product[] {
  */
 export function getProductById(id: string): Product | null {
   const products = getAllProducts();
-  return products.find((product) => product.id === id || product.slug === id) ?? null;
+  return (
+    products.find((product) => product.id === id || product.slug === id) ?? null
+  );
 }
 
 /**
  * Получить все slug товаров для генерации статических путей
- * @returns Массив объектов с param id
+ * @returns Массив объектов с param slug (совпадает с [slug] в маршруте)
  */
-export function getAllProductSlugs(): Array<{ id: string }> {
+export function getAllProductSlugs(): Array<{ slug: string }> {
   const products = getAllProducts();
-  return products.map((product) => ({ id: product.id }));
+  return products.map((product) => ({ slug: product.id }));
 }
 
 /**

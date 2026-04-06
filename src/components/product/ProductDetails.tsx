@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState, ChangeEvent, KeyboardEvent } from "react";
 import {
   Box,
   SimpleGrid,
@@ -11,7 +10,7 @@ import {
   List,
   Button,
   Flex,
-  NumberInput,
+  Input,
 } from "@chakra-ui/react";
 import type { Product } from "@/types/product";
 import { FavoriteIcon } from "./FavoriteIcon";
@@ -29,24 +28,47 @@ export function ProductDetails({
   onToggleFavorite,
   onAddToCart,
 }: ProductDetailsProps) {
-  const [quantity, setQuantity] = useState("1");
+  const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    onAddToCart(product.id, parseInt(quantity, 10) || 1);
+    onAddToCart(product.id, quantity);
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const onlyNumbers = +e.target.value.replace(/\D/g, "");
+    setQuantity(onlyNumbers);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (
+      !/^\d$/.test(e.key) &&
+      !["Backspace", "Delete", "Tab", "Enter", "Escape"].includes(e.key)
+    ) {
+      e.preventDefault();
+    }
   };
 
   return (
     <Box py={8}>
-      <SimpleGrid columns={{ base: 1, lg: 2 }} gap={8} maxW="container.xl" mx="auto" px={4}>
+      <SimpleGrid
+        columns={{ base: 1, lg: 2 }}
+        gap={8}
+        maxW="container.xl"
+        mx="auto"
+        px={4}
+      >
         {/* Изображение */}
-        <Box position="relative" width="100%" pt="75%" bg="gray.100" borderRadius="md" overflow="hidden">
-          <Image
+        <Box
+          width={{ base: "100%", lg: "90%" }}
+          mx={{ lg: "auto" }}
+          borderRadius="md"
+          overflow="hidden"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={product.imagePath}
             alt={product.title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            style={{ objectFit: "cover" }}
-            priority
+            style={{ width: "100%", height: "auto", display: "block" }}
           />
         </Box>
 
@@ -82,32 +104,76 @@ export function ProductDetails({
           </VStack>
 
           {/* Количество и кнопка */}
-          <Flex gap={4} alignItems="center" mt={4}>
-            <VStack align="flex-start" gap={1}>
-              <Text fontSize="sm" color="text.muted">
-                Количество
-              </Text>
-              <NumberInput.Root
-                value={quantity}
-                onValueChange={(details) => setQuantity(details.value)}
-                min={1}
-                max={99}
-                width="160px"
+          <Flex
+            gap={4}
+            mt={4}
+            width="100%"
+            direction={{ base: "column", lg: "row" }}
+            alignItems={{ base: "stretch", lg: "center" }}
+          >
+            <Text
+              fontSize="sm"
+              color="text.muted"
+              whiteSpace="nowrap"
+              alignSelf={{ base: "flex-start", lg: "center" }}
+            >
+              Количество
+            </Text>
+            <Flex
+              gap={1}
+              alignItems="center"
+              direction="row"
+              width={{ base: "100%", lg: "auto" }}
+              flexWrap={{ base: "wrap", lg: "nowrap" }}
+            >
+              <Button
+                size="sm"
+                borderRadius="full"
+                width="32px"
+                height="32px"
+                minWidth="unset"
+                bg="teal.500"
+                color="white"
+                _hover={{ bg: "teal.600" }}
+                fontSize="lg"
+                fontWeight="bold"
+                onClick={() => {
+                  if (quantity > 1) setQuantity((prev) => prev - 1);
+                }}
               >
-                <NumberInput.Control>
-                  <NumberInput.DecrementTrigger />
-                  <NumberInput.Input />
-                  <NumberInput.IncrementTrigger />
-                </NumberInput.Control>
-              </NumberInput.Root>
-            </VStack>
+                −
+              </Button>
+              <Input
+                textAlign="center"
+                value={quantity}
+                width="0.5"
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+              />
+              <Button
+                size="sm"
+                borderRadius="full"
+                width="32px"
+                height="32px"
+                minWidth="unset"
+                bg="teal.500"
+                color="white"
+                _hover={{ bg: "teal.600" }}
+                fontSize="lg"
+                fontWeight="bold"
+                onClick={() => {
+                  setQuantity((prev) => prev + 1);
+                }}
+              >
+                +
+              </Button>
+            </Flex>
 
             <Button
-              size="lg"
+              size={{ base: "xl", lg: "lg" }}
               bg="teal.500"
               color="white"
               _hover={{ bg: "teal.600" }}
-              flex={1}
               onClick={handleAddToCart}
             >
               В корзину

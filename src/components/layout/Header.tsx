@@ -10,17 +10,9 @@ import {
   IconButton,
   Badge,
   Text,
-  DrawerRoot,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  DrawerTrigger,
-  DrawerCloseTrigger,
-  Button,
-  Stack,
   Container,
 } from "@chakra-ui/react";
-import { Menu, ShoppingCart, Heart, Monitor } from "lucide-react";
+import { Menu, Monitor } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useFavoriteStore } from "@/stores/favoriteStore";
 
@@ -32,107 +24,32 @@ const navLinks = [
   { href: "/cart", label: "Корзина" },
 ];
 
-export function Header() {
-  const [isMounted, setIsMounted] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+interface HeaderProps {
+  onMenuClick: () => void;
+}
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMounted(true);
-  }, []);
-
+export function Header({ onMenuClick }: HeaderProps) {
   const pathname = usePathname();
   const totalItems = useCartStore((state) => state.totalItems);
   const favoritesCount = useFavoriteStore((state) => state.count);
 
+  // Hydration guard: синхронизация SSR/CSR
+  const [hydrated, setHydrated] = useState(false);
+
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  const displayCartCount = hydrated ? totalItems : 0;
+  const displayFavoritesCount = hydrated ? favoritesCount : 0;
+
   const isActive = (href: string) => {
+    if (!hydrated) return false;
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
-
-  // До монтирования рендерим упрощённую версию без зависимостей от клиентского состояния
-  if (!isMounted) {
-    return (
-      <Box
-        as="header"
-        bg="bg.default"
-        borderBottomWidth="1px"
-        borderColor="border.default"
-        position="sticky"
-        top={0}
-        zIndex="sticky"
-        shadow="sm"
-        suppressHydrationWarning
-      >
-        <Container maxW="container.xl" py={4}>
-          <Flex alignItems="center" justifyContent="space-between">
-            <Link href="/" passHref>
-              <HStack gap={2} cursor="pointer">
-                <Monitor size={28} color="var(--chakra-colors-teal-500)" />
-                <Text
-                  fontSize="xl"
-                  fontWeight="bold"
-                  color="teal.500"
-                  letterSpacing="tight"
-                >
-                  Pineapple Pi
-                </Text>
-              </HStack>
-            </Link>
-
-            {/* Десктопная навигация - статичная без активных состояний */}
-            <HStack gap={6} display={{ base: "none", lg: "flex" }}>
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} passHref>
-                  <Text
-                    color="text.default"
-                    fontWeight="medium"
-                    _hover={{ color: "teal.500" }}
-                    transition="color 0.2s"
-                    cursor="pointer"
-                  >
-                    {link.label}
-                  </Text>
-                </Link>
-              ))}
-            </HStack>
-
-            {/* Мобильные иконки - без бейджей */}
-            <HStack gap={2} display={{ base: "flex", lg: "none" }}>
-              <Link href="/favorites" passHref>
-                <IconButton
-                  aria-label="Избранное"
-                  variant="ghost"
-                  size="sm"
-                >
-                  <Heart size={20} />
-                </IconButton>
-              </Link>
-
-              <Link href="/cart" passHref>
-                <IconButton
-                  aria-label="Корзина"
-                  variant="ghost"
-                  size="sm"
-                >
-                  <ShoppingCart size={20} />
-                </IconButton>
-              </Link>
-
-              {/* Гамбургер-меню */}
-              <IconButton
-                aria-label="Меню"
-                variant="ghost"
-                size="sm"
-              >
-                <Menu size={20} />
-              </IconButton>
-            </HStack>
-          </Flex>
-        </Container>
-      </Box>
-    );
-  }
 
   return (
     <Box
@@ -144,19 +61,19 @@ export function Header() {
       top={0}
       zIndex="sticky"
       shadow="sm"
-      suppressHydrationWarning
     >
-      <Container maxW="container.xl" py={4}>
-        <Flex alignItems="center" justifyContent="space-between">
+      <Container maxW="container.xl" py={{ base: 2, md: 4 }}>
+        <Flex alignItems="center" justifyContent="space-between" gap={2}>
           {/* Логотип */}
           <Link href="/" passHref>
-            <HStack gap={2} cursor="pointer">
-              <Monitor size={28} color="var(--chakra-colors-teal-500)" />
+            <HStack gap={1} cursor="pointer" flexShrink={0}>
+              <Monitor size={24} color="var(--chakra-colors-teal-500)" />
               <Text
-                fontSize="xl"
+                fontSize={{ base: "lg", md: "xl" }}
                 fontWeight="bold"
                 color="teal.500"
                 letterSpacing="tight"
+                whiteSpace="nowrap"
               >
                 Pineapple Pi
               </Text>
@@ -164,7 +81,7 @@ export function Header() {
           </Link>
 
           {/* Десктопная навигация (lg+) */}
-          <HStack gap={6} display={{ base: "none", lg: "flex" }}>
+          <HStack gap={6} display={{ base: "none", md: "flex" }}>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} passHref>
                 <Text
@@ -175,7 +92,7 @@ export function Header() {
                   cursor="pointer"
                 >
                   {link.label}
-                  {link.href === "/cart" && isMounted && totalItems > 0 && (
+                  {link.href === "/cart" && displayCartCount > 0 && (
                     <Badge
                       ml={1}
                       colorScheme="teal"
@@ -186,10 +103,10 @@ export function Header() {
                       py={0.5}
                       borderRadius="full"
                     >
-                      {totalItems}
+                      {displayCartCount}
                     </Badge>
                   )}
-                  {link.href === "/favorites" && isMounted && favoritesCount > 0 && (
+                  {link.href === "/favorites" && displayFavoritesCount > 0 && (
                     <Badge
                       ml={1}
                       colorScheme="red"
@@ -200,120 +117,31 @@ export function Header() {
                       py={0.5}
                       borderRadius="full"
                     >
-                      {favoritesCount}
+                      {displayFavoritesCount}
                     </Badge>
                   )}
                 </Text>
               </Link>
             ))}
           </HStack>
-
-          {/* Мобильные иконки + гамбургер */}
-          <HStack gap={2} display={{ base: "flex", lg: "none" }}>
-            <Link href="/favorites" passHref>
-              <Box position="relative">
-                <IconButton
-                  aria-label="Избранное"
-                  variant="ghost"
-                  size="sm"
-                >
-                  <Heart size={20} />
-                </IconButton>
-                {isMounted && favoritesCount > 0 && (
-                  <Badge
-                    position="absolute"
-                    top="-1"
-                    right="-1"
-                    bg="red.500"
-                    color="white"
-                    fontSize="xs"
-                    minW={4}
-                    h={4}
-                    borderRadius="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    px={1}
-                  >
-                    {favoritesCount}
-                  </Badge>
-                )}
-              </Box>
-            </Link>
-
-            <Link href="/cart" passHref>
-              <Box position="relative">
-                <IconButton
-                  aria-label="Корзина"
-                  variant="ghost"
-                  size="sm"
-                >
-                  <ShoppingCart size={20} />
-                </IconButton>
-                {isMounted && totalItems > 0 && (
-                  <Badge
-                    position="absolute"
-                    top="-1"
-                    right="-1"
-                    bg="teal.500"
-                    color="white"
-                    fontSize="xs"
-                    minW={4}
-                    h={4}
-                    borderRadius="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    px={1}
-                  >
-                    {totalItems}
-                  </Badge>
-                )}
-              </Box>
-            </Link>
-
-            {/* Гамбургер-меню */}
-            <DrawerRoot
-              open={drawerOpen}
-              onOpenChange={(e) => setDrawerOpen(e.open)}
-              placement="end"
-            >
-              <DrawerTrigger asChild>
-                <IconButton
-                  aria-label="Меню"
-                  variant="ghost"
-                  size="sm"
-                >
-                  <Menu size={20} />
-                </IconButton>
-              </DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>Меню</DrawerHeader>
-                <DrawerCloseTrigger />
-                <DrawerBody>
-                  <Stack gap={2}>
-                    {navLinks.map((link) => (
-                      <Link key={link.href} href={link.href} passHref>
-                        <Button
-                          variant="ghost"
-                          justifyContent="flex-start"
-                          width="full"
-                          color={
-                            isActive(link.href) ? "teal.500" : "text.default"
-                          }
-                          onClick={() => setDrawerOpen(false)}
-                        >
-                          {link.label}
-                        </Button>
-                      </Link>
-                    ))}
-                  </Stack>
-                </DrawerBody>
-              </DrawerContent>
-            </DrawerRoot>
-          </HStack>
+        
+          <IconButton
+            display={{ base: "flex", md: "none" }}
+            aria-label="Меню"
+            variant="ghost"
+            minW="auto"
+            w={9}
+            h={9}
+            p={0}
+            flexShrink={0}
+            onClick={onMenuClick}
+          >
+            <Menu size={22} />
+          </IconButton>
         </Flex>
       </Container>
     </Box>
   );
 }
+
+export { navLinks };
