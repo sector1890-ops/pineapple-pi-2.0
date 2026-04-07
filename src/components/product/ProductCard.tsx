@@ -24,48 +24,35 @@ export function ProductCard({
   onToggleFavorite,
   onAddToCart,
 }: ProductCardProps) {
-  const handleCardClick = (e: React.MouseEvent) => {
-    // Проверяем, что клик не был по кнопкам
-    const target = e.target as HTMLElement;
-    const isButton = target.closest("button");
-    if (!isButton) {
-      // Переход на страницу товара происходит через Link
-    }
-  };
-
   return (
     <Card.Root
       overflow="hidden"
       transition="shadow 0.2s, transform 0.2s"
       _hover={{ shadow: "lg", transform: "translateY(-2px)" }}
-      onClick={handleCardClick}
     >
-      <Link href={`/product/${product.slug}`} passHref>
-        <Box position="relative" width="100%" pt="75%" bg="gray.100" cursor="pointer">
-          <Image
-            src={product.imagePath}
-            alt={product.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            style={{ objectFit: "cover" }}
-            loading="lazy"
+      <Box position="relative" width="100%" pt="75%" bg="gray.100">
+        <Image
+          src={product.imagePath}
+          alt={product.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: "cover" }}
+          loading="lazy"
+        />
+        {/* Позиция для FavoriteIcon */}
+        <Box
+          position="absolute"
+          top={2}
+          right={2}
+          zIndex={1}
+        >
+          <FavoriteIcon
+            isFavorite={isFavorite}
+            onToggle={() => onToggleFavorite(product.id)}
+            size="sm"
           />
-          {/* Позиция для FavoriteIcon */}
-          <Box
-            position="absolute"
-            top={2}
-            right={2}
-            zIndex={1}
-            onClick={(e) => e.preventDefault()}
-          >
-            <FavoriteIcon
-              isFavorite={isFavorite}
-              onToggle={() => onToggleFavorite(product.id)}
-              size="sm"
-            />
-          </Box>
         </Box>
-      </Link>
+      </Box>
 
       <Card.Body gap={2}>
         <Link href={`/product/${product.slug}`} passHref>
