@@ -60,7 +60,8 @@ pineapple-pi-2.0/
 │   │   │   └── CartSummary.tsx       # Сводка корзины
 │   │   └── ui/
 │   │       ├── ContactForm.tsx       # Форма обратной связи
-│   │       └── EmptyState.tsx        # Пустое состояние
+│   │       ├── EmptyState.tsx        # Пустое состояние
+│   │       └── ThemeToggle.tsx       # Переключатель тем
 │   │
 │   ├── lib/
 │   │   ├── markdown.ts               # Утилиты парсинга Markdown
@@ -456,6 +457,7 @@ pineapple-pi-2.0/
 - [x] Предложена стратегия работы с изображениями
 - [x] Определена логика Cookie-баннера
 - [x] Описана конфигурация темы Chakra UI
+- [x] Спроектирован переключатель тем (ThemeToggle)
 - [x] Учтено разделение Server/Client Components
 - [x] Описан механизм генерации slug
 - [x] Спроектирован UI выбора доставки

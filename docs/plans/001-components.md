@@ -385,6 +385,43 @@
 
 ---
 
+### ThemeToggle
+
+| Параметр | Значение |
+|----------|----------|
+| **Тип** | Client Component |
+| **Расположение** | components/ui/ThemeToggle.tsx |
+| **Ответственность** | Переключение светлой/тёмной темы |
+
+**Props:**
+| Prop | Тип | Обязательный | Описание |
+|------|-----|--------------|----------|
+| — | — | — | Нет props (использует Chakra useColorMode) |
+
+**Chakra UI компоненты:**
+- IconButton
+- Icon (SunIcon, MoonIcon из lucide-react)
+- useColorMode хук (из @chakra-ui/react)
+
+**Состояние:**
+- colorMode (из Chakra: "light" | "dark")
+- toggleColorMode (функция переключения)
+
+**Поведение:**
+- При клике: вызов toggleColorMode
+- Иконка меняется в зависимости от текущей темы (Sun → Moon)
+- Анимация перехода через CSS transitions
+- Сохранение выбора в localStorage (автоматически Chakra)
+- Ключ localStorage: chakra-ui-color-mode
+- Accessibility: aria-label для скринридеров
+
+**Интеграция:**
+- Размещается в Header перед иконками корзины/избранного
+- Виден на всех breakpoint'ах
+- Корректно работает с системной темой (по умолчанию)
+
+---
+
 ## 📄 Страницы
 
 ### Главная страница (/)
@@ -587,6 +624,7 @@
 | Header | Client | cartCount, favoritesCount | cartStore, favoriteStore | chakra-ui-v3 |
 | Footer | Server | — | — | chakra-ui-v3 |
 | CookieBanner | Client | — | localStorage | zustand |
+| ThemeToggle | Client | — | Chakra colorMode | chakra-ui-v3 |
 | ProductCard | Server | product, isFavorite, onToggleFavorite, onAddToCart | — | chakra-ui-v3, nextjs-image |
 | ProductGrid | Server | products, favorites, callbacks | — | chakra-ui-v3 |
 | FavoriteIcon | Client | isFavorite, onToggle, size | favoriteStore | chakra-ui-v3 |
@@ -606,6 +644,7 @@
 - [x] Спецификация FavoriteIcon
 - [x] Спецификация ProductDetails
 - [x] Спецификация DeliveryOption
+- [x] Спецификация ThemeToggle
 - [x] Спецификация CartSummary
 - [x] Спецификация страницы избранного
 - [x] Props для каждого компонента
