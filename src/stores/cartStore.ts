@@ -17,10 +17,10 @@ interface CartState {
   toggleDelivery: (enabled: boolean) => void;
 
   // Вычисляемые значения (геттеры)
-  totalItems: number;
-  subtotal: number;
-  deliveryCost: number;
-  total: number;
+  getTotalItems: () => number;
+  getSubtotal: () => number;
+  getDeliveryCost: () => number;
+  getTotal: () => number;
 }
 
 /**
@@ -90,12 +90,12 @@ export const useCartStore = create<CartState>()(
       },
 
       // Геттер: общее количество товаров
-      get totalItems() {
+      getTotalItems: () => {
         return get().items.reduce((sum, item) => sum + item.quantity, 0);
       },
 
       // Геттер: сумма товаров без доставки
-      get subtotal() {
+      getSubtotal: () => {
         return get().items.reduce(
           (sum, item) => sum + item.product.price * item.quantity,
           0
@@ -103,13 +103,13 @@ export const useCartStore = create<CartState>()(
       },
 
       // Геттер: стоимость доставки
-      get deliveryCost() {
+      getDeliveryCost: () => {
         return get().delivery ? 5 : 0;
       },
 
       // Геттер: итоговая сумма
-      get total() {
-        return get().subtotal + get().deliveryCost;
+      getTotal: () => {
+        return get().getSubtotal() + get().getDeliveryCost();
       },
     }),
     {

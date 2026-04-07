@@ -30,7 +30,7 @@ interface HeaderProps {
 
 export function Header({ onMenuClick }: HeaderProps) {
   const pathname = usePathname();
-  const totalItems = useCartStore((state) => state.totalItems);
+  const totalItems = useCartStore((state) => state.getTotalItems());
   const favoritesCount = useFavoriteStore((state) => state.count);
 
   // Hydration guard: синхронизация SSR/CSR

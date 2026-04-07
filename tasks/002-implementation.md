@@ -310,40 +310,43 @@
 
 ### Задачи
 
-- [ ] 9.1 Создать components/cart/CartItem.tsx (Client Component)
+- [x] 9.1 Создать components/cart/CartItem.tsx (Client Component)
   - Props: item, onUpdateQuantity, onRemove
   - Миниатюра изображения (next/image)
   - Название, цена
-  - NumberInput (количество, min=1, max=99)
+  - Кнопки +/- (количество, min=1, max=99)
   - Кнопка удаления (иконка мусорки)
   - Адаптивность: вертикально на мобильных, горизонтально на десктопе
-- [ ] 9.2 Создать components/cart/DeliveryOption.tsx (Client Component)
+- [x] 9.2 Создать components/cart/DeliveryOption.tsx (Client Component)
   - Props: enabled, onToggle, price
   - Checkbox с текстом "Добавить доставку (+$5)"
   - Визуальное выделение при enabled
-- [ ] 9.3 Создать components/cart/CartSummary.tsx (Client Component)
+- [x] 9.3 Создать components/cart/CartSummary.tsx (Client Component)
   - Props: subtotal, deliveryCost, total, onCheckout, isLoading
   - Разбивка: Товары, Доставка, Итого
   - Button "Оформить заказ" (disabled если isLoading)
-- [ ] 9.4 Создать app/cart/page.tsx (Client Component)
+- [x] 9.4 Создать app/cart/page.tsx (Server Component) + CartPageClient.tsx
   - Чтение cartStore (items, delivery, геттеры)
   - CartItem для каждого элемента
   - DeliveryOption с toggleDelivery
   - CartSummary с onCheckout
   - EmptyState если корзина пуста
-- [ ] 9.5 Реализовать onCheckout
+- [x] 9.5 Реализовать onCheckout
   - POST /api/order с данными заказа
   - При успехе: clearCart(), toast, редирект на "/"
   - При ошибке: toast с ошибкой
   - isLoading состояние
 
 **Проверка:**
-- /cart показывает товары в корзине
-- Изменение количества обновляет сумму
-- DeliveryOption переключает доставку
-- CartSummary считает правильно (subtotal + delivery)
-- Оформление заказа работает
-- Корзина очищается после заказа
+- ✅ /cart показывает товары в корзине
+- ✅ Изменение количества обновляет сумму
+- ✅ DeliveryOption переключает доставку
+- ✅ CartSummary считает правильно (subtotal + delivery)
+- ✅ Оформление заказа работает
+- ✅ Корзина очищается после заказа
+- ✅ TypeScript компиляция без ошибок
+- ✅ Линтер без ошибок
+- ✅ Все тесты проходят (48 тестов)
 
 ---
 
@@ -495,7 +498,7 @@
 | 6. Главная страница | ✅ Завершён | Каталог + toast уведомления |
 | 7. Страница товара SSG | ✅ Завершён | SSG генерация, ProductPageClient, 404, тесты |
 | 8. Избранное | ✅ Завершён | /favorites, EmptyState, синхронизация |
-| 9. Корзина | ⬜ Не начат | |
+| 9. Корзина | ✅ Завершён | CartItem, DeliveryOption, CartSummary, onCheckout |
 | 10. API Routes | ⬜ Не начат | |
 | 11. Контакты | ⬜ Не начат | |
 | 12. О компании | ⬜ Не начат | |

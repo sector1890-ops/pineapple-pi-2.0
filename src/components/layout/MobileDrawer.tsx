@@ -32,7 +32,7 @@ interface MobileDrawerProps {
 
 export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
   const pathname = usePathname();
-  const totalItems = useCartStore((state) => state.totalItems);
+  const totalItems = useCartStore((state) => state.getTotalItems());
   const favoritesCount = useFavoriteStore((state) => state.count);
 
   const [hydrated, setHydrated] = useState(false);
