@@ -9,13 +9,7 @@ import { CartSummary } from "@/components/cart/CartSummary";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Box, Container, SimpleGrid } from "@chakra-ui/react";
 import { ShoppingBag } from "lucide-react";
-import { createToaster } from "@chakra-ui/react";
-
-const toaster = createToaster({
-  placement: "top-end",
-  duration: 3000,
-  gap: 3,
-});
+import { toaster } from "@/lib/toaster";
 
 /**
  * Client Component для страницы корзины
@@ -46,7 +40,7 @@ export function CartPageClient() {
     removeItem(id);
     toaster.create({
       title: "Товар удалён из корзины",
-      type: "info",
+      type: "success",
     });
   };
 

@@ -4,13 +4,9 @@ import { useCartStore } from "@/stores/cartStore";
 import { useFavoriteStore } from "@/stores/favoriteStore";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import type { Product } from "@/types/product";
-import { createToaster } from "@chakra-ui/react";
+import { toaster } from "@/lib/toaster";
 
-export const toaster = createToaster({
-  placement: "top-end",
-  duration: 3000,
-  gap: 3,
-});
+export { toaster };
 
 interface HomePageClientProps {
   products: Product[];
@@ -40,7 +36,7 @@ export function HomePageClient({ products }: HomePageClientProps) {
       title: wasFavorite
         ? "Удалено из избранного"
         : "Добавлено в избранное",
-      type: wasFavorite ? "info" : "success",
+      type: "success",
     });
   };
 

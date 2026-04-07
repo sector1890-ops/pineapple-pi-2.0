@@ -5,13 +5,7 @@ import { ProductDetails } from "@/components/product/ProductDetails";
 import type { Product } from "@/types/product";
 import { useCartStore } from "@/stores/cartStore";
 import { useFavoriteStore } from "@/stores/favoriteStore";
-import { createToaster } from "@chakra-ui/react";
-
-const toaster = createToaster({
-  placement: "top-end",
-  duration: 3000,
-  gap: 3,
-});
+import { toaster } from "@/lib/toaster";
 
 interface ProductPageClientProps {
   product: Product;
@@ -55,7 +49,7 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
     toggleFavorite(id);
     toaster.create({
       title: checkFavorite ? "Удалено из избранного" : "Добавлено в избранное",
-      type: checkFavorite ? "info" : "success",
+      type: "success",
     });
   };
 

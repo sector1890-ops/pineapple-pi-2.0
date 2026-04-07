@@ -390,7 +390,7 @@
 
 ### Задачи
 
-- [ ] 11.1 Создать components/ui/ContactForm.tsx (Client Component)
+- [x] 11.1 Создать components/ui/ContactForm.tsx (Client Component)
   - Props: onSubmit
   - Поля: name (Input), email (Input), message (Textarea)
   - Валидация (name min 2, email формат, message min 10)
@@ -398,17 +398,20 @@
   - При отправке: валидация, вызов onSubmit
   - Toast при успехе/ошибке
   - Disabled состояние во время отправки
-- [ ] 11.2 Создать app/contact/page.tsx (Client Component)
+- [x] 11.2 Создать app/contact/page.tsx (Client Component)
   - ContactForm
   - onSubmit: POST /api/feedback
   - Toast уведомление
 
 **Проверка:**
-- /contact отображает форму
-- Валидация работает
-- Отправка работает
-- Toast показывается
-- Ошибки отображаются под полями
+- ✅ /contact отображает форму
+- ✅ Валидация работает
+- ✅ Отправка работает
+- ✅ Toast показывается
+- ✅ Ошибки отображаются под полями
+- ✅ TypeScript компиляция без ошибок
+- ✅ Линтер без ошибок
+- ✅ Все тесты проходят (68 тестов)
 
 ---
 
@@ -503,7 +506,7 @@
 | 8. Избранное | ✅ Завершён | /favorites, EmptyState, синхронизация |
 | 9. Корзина | ✅ Завершён | CartItem, DeliveryOption, CartSummary, onCheckout |
 | 10. API Routes | ✅ Завершён | /api/feedback, /api/order, валидация, тесты |
-| 11. Контакты | ⬜ Не начат | |
+| 11. Контакты | ✅ Завершён | ContactForm, валидация, POST /api/feedback |
 | 12. О компании | ⬜ Не начат | |
 | 13. Not Found | ⬜ Не начат | |
 | 14. Полировка | ⬜ Не начат | |

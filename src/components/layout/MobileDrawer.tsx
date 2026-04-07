@@ -33,7 +33,7 @@ interface MobileDrawerProps {
 export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
   const pathname = usePathname();
   const totalItems = useCartStore((state) => state.getTotalItems());
-  const favoritesCount = useFavoriteStore((state) => state.count);
+  const favoritesCount = useFavoriteStore((state) => state.getCount());
 
   const [hydrated, setHydrated] = useState(false);
   // Для анимации: при открытии сначала закрытое состояние, потом открытое
@@ -139,7 +139,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                   <HStack gap={2} flex={1} justifyContent="space-between">
                     <Text>Корзина</Text>
                     {displayCartCount > 0 && (
-                      <Badge bg="teal.500" color="white" borderRadius="full" px={2}>
+                      <Badge bg="red.500" color="white" borderRadius="full" px={2}>
                         {displayCartCount}
                       </Badge>
                     )}

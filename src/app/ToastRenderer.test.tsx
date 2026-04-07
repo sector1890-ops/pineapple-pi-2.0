@@ -5,15 +5,15 @@
  *   - Happy path (2): рендер после mount, отображение Toaster
  *   - Поведение (1): Toaster получает toaster prop
  * - Использованы моки:
- *   - ./HomePageClient (toaster)
+ *   - @/lib/toaster (toaster)
  *   - @chakra-ui/react (Toaster, Toast)
  */
 
 import { render, screen, waitFor } from "@testing-library/react";
 import { ToastRenderer } from "./ToastRenderer";
 
-// Мок для toaster из HomePageClient
-jest.mock("./HomePageClient", () => ({
+// Мок для toaster
+jest.mock("@/lib/toaster", () => ({
   toaster: {
     create: jest.fn(),
   },

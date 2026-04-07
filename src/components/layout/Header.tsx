@@ -31,7 +31,7 @@ interface HeaderProps {
 export function Header({ onMenuClick }: HeaderProps) {
   const pathname = usePathname();
   const totalItems = useCartStore((state) => state.getTotalItems());
-  const favoritesCount = useFavoriteStore((state) => state.count);
+  const favoritesCount = useFavoriteStore((state) => state.getCount());
 
   // Hydration guard: синхронизация SSR/CSR
   const [hydrated, setHydrated] = useState(false);
@@ -95,8 +95,7 @@ export function Header({ onMenuClick }: HeaderProps) {
                   {link.href === "/cart" && displayCartCount > 0 && (
                     <Badge
                       ml={1}
-                      colorScheme="teal"
-                      bg="teal.500"
+                      bg="red.500"
                       color="white"
                       fontSize="xs"
                       px={1.5}

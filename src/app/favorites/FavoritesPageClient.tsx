@@ -5,15 +5,9 @@ import { useCartStore } from "@/stores/cartStore";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Container, Text } from "@chakra-ui/react";
-import { createToaster } from "@chakra-ui/react";
 import { Heart } from "lucide-react";
 import type { Product } from "@/types/product";
-
-export const toaster = createToaster({
-  placement: "top-end",
-  duration: 3000,
-  gap: 3,
-});
+import { toaster } from "@/lib/toaster";
 
 interface FavoritesPageClientProps {
   allProducts: Product[];
@@ -40,7 +34,7 @@ export function FavoritesPageClient({ allProducts }: FavoritesPageClientProps) {
       title: wasFavorite
         ? "Удалено из избранного"
         : "Добавлено в избранное",
-      type: wasFavorite ? "info" : "success",
+      type: "success",
     });
   };
 

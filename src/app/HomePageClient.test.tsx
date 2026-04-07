@@ -186,7 +186,7 @@ describe("HomePageClient", () => {
       expect(mockToggleFavorite).toHaveBeenCalledWith("test-product-id");
       expect(mockCreateToast).toHaveBeenCalledWith({
         title: "Удалено из избранного",
-        type: "info",
+        type: "success",
       });
     });
   });

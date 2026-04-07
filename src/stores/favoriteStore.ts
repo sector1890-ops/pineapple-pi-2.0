@@ -14,7 +14,7 @@ interface FavoriteState {
   clearFavorites: () => void;
 
   // Вычисляемые значения (геттеры)
-  count: number;
+  getCount: () => number;
 }
 
 /**
@@ -57,7 +57,7 @@ export const useFavoriteStore = create<FavoriteState>()(
       },
 
       // Геттер: количество избранных товаров
-      get count() {
+      getCount: () => {
         return get().items.length;
       },
     }),
