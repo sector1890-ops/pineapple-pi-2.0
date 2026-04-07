@@ -356,14 +356,14 @@
 
 ### Задачи
 
-- [ ] 10.1 Создать app/api/feedback/route.ts
+- [x] 10.1 Создать app/api/feedback/route.ts
   - POST handler
   - Валидация body (name, email, message)
   - Проверка формата email
   - Имитация задержки (setTimeout 1-2 сек)
   - Response: { success: true, message: "..." }
   - Обработка ошибок (400 при неверных данных)
-- [ ] 10.2 Создать app/api/order/route.ts
+- [x] 10.2 Создать app/api/order/route.ts
   - POST handler
   - Валидация body (items, delivery, subtotal, deliveryCost, total)
   - Проверка что items не пустой
@@ -373,11 +373,14 @@
   - Обработка ошибок
 
 **Проверка:**
-- POST /api/feedback принимает данные
-- Валидация работает (пустые поля, неверный email)
-- POST /api/order принимает заказ
-- orderId генерируется
-- Ошибки возвращают 400
+- ✅ POST /api/feedback принимает данные
+- ✅ Валидация работает (пустые поля, неверный email)
+- ✅ POST /api/order принимает заказ
+- ✅ orderId генерируется
+- ✅ Ошибки возвращают 400
+- ✅ TypeScript компиляция без ошибок
+- ✅ Линтер без ошибок
+- ✅ Все тесты проходят (61 тест)
 
 ---
 
@@ -499,7 +502,7 @@
 | 7. Страница товара SSG | ✅ Завершён | SSG генерация, ProductPageClient, 404, тесты |
 | 8. Избранное | ✅ Завершён | /favorites, EmptyState, синхронизация |
 | 9. Корзина | ✅ Завершён | CartItem, DeliveryOption, CartSummary, onCheckout |
-| 10. API Routes | ⬜ Не начат | |
+| 10. API Routes | ✅ Завершён | /api/feedback, /api/order, валидация, тесты |
 | 11. Контакты | ⬜ Не начат | |
 | 12. О компании | ⬜ Не начат | |
 | 13. Not Found | ⬜ Не начат | |
