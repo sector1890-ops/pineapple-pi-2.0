@@ -421,16 +421,19 @@
 
 ### Задачи
 
-- [ ] 12.1 Создать app/about/page.tsx (Server Component)
+- [x] 12.1 Создать app/about/page.tsx (Server Component)
   - Импорт data/about-company.ts
   - Секции: Hero, Mission, Values (SimpleGrid), History (List), Statistics (SimpleGrid), Team, Contact
-  - Chakra UI компоненты (Container, Heading, Text, Divider)
+  - Chakra UI компоненты (Container, Heading, Text, Box вместо Divider)
   - Адаптивность
 
 **Проверка:**
-- /about отображает контент
-- Секции адаптивны
-- Данные из about-company.ts используются
+- ✅ /about отображает контент
+- ✅ Секции адаптивны
+- ✅ Данные из about-company.ts используются
+- ✅ TypeScript компиляция без ошибок
+- ✅ Линтер без ошибок
+- ✅ Все тесты проходят (72 теста)
 
 ---
 
@@ -507,7 +510,7 @@
 | 9. Корзина | ✅ Завершён | CartItem, DeliveryOption, CartSummary, onCheckout |
 | 10. API Routes | ✅ Завершён | /api/feedback, /api/order, валидация, тесты |
 | 11. Контакты | ✅ Завершён | ContactForm, валидация, POST /api/feedback |
-| 12. О компании | ⬜ Не начат | |
+| 12. О компании | ✅ Завершён | Hero, Mission, Values, History, Stats, Team, Contact |
 | 13. Not Found | ⬜ Не начат | |
 | 14. Полировка | ⬜ Не начат | |
 
