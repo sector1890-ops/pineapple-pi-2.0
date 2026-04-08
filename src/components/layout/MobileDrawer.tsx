@@ -16,6 +16,7 @@ import {
 import { Monitor } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useFavoriteStore } from "@/stores/favoriteStore";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Главная" },
@@ -109,6 +110,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
             Pineapple Pi
           </Text>
           <Box flex={1} />
+          <ThemeToggle />
           <IconButton
             aria-label="Закрыть"
             variant="ghost"

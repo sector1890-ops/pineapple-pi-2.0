@@ -19,30 +19,25 @@ import { ContactForm } from "@/components/ui/ContactForm";
 // Мок Chakra UI компонентов
 jest.mock("@chakra-ui/react", () => ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Box: ({ children, as, ...props }: Record<string, any>) => {
+  Box: (mockProps: Record<string, any>) => {
+    const { children, as, ...props } = mockProps;
     const Component = as === "form" ? "form" : "div";
     return <Component {...props}>{children}</Component>;
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Button: ({ children, loading, type, onClick, ...props }: Record<string, any>) => (
+  Button: ({ children, loading, type, onClick, ...props }: { children?: React.ReactNode; loading?: boolean; type?: HTMLButtonElement["type"]; onClick?: () => void } & Record<string, unknown>) => (
     <button {...props} type={type} disabled={loading} onClick={onClick} data-loading={loading ? "true" : undefined}>
       {children}
     </button>
   ),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Heading: ({ children, ...props }: Record<string, any>) => <h2 {...props}>{children}</h2>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Input: ({ value, onChange, type, placeholder, ...props }: Record<string, any>) => (
+  Heading: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => <h2 {...props}>{children}</h2>,
+  Input: ({ value, onChange, type, placeholder, ...props }: { value?: string; onChange?: (e: { target: { value: string } }) => void; type?: HTMLInputElement["type"]; placeholder?: string } & Record<string, unknown>) => (
     <input {...props} value={value} onChange={onChange} type={type || "text"} placeholder={placeholder} />
   ),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Text: ({ children, ...props }: Record<string, any>) => <span {...props}>{children}</span>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Textarea: ({ value, onChange, placeholder, ...props }: Record<string, any>) => (
+  Text: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => <span {...props}>{children}</span>,
+  Textarea: ({ value, onChange, placeholder, ...props }: { value?: string; onChange?: (e: { target: { value: string } }) => void; placeholder?: string } & Record<string, unknown>) => (
     <textarea {...props} value={onChange ? value : undefined} onChange={onChange} placeholder={placeholder} />
   ),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  VStack: ({ children, ...props }: Record<string, any>) => <div {...props}>{children}</div>,
+  VStack: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => <div {...props}>{children}</div>,
   createToaster: () => ({
     create: jest.fn(),
   }),

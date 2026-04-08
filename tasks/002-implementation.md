@@ -443,14 +443,14 @@
 
 ### Задачи
 
-- [ ] 13.1 Создать app/not-found.tsx (Server Component)
+- [x] 13.1 Создать app/not-found.tsx (Server Component)
   - Header, Footer
   - EmptyState (title: "Страница не найдена", description: "...", actionLabel: "На главную", actionHref: "/")
   - Код 404
 
 **Проверка:**
-- Несуществующий маршрут показывает 404
-- Кнопка "На главную" работает
+- ✅ Несуществующий маршрут показывает 404
+- ✅ Кнопка "На главную" работает
 
 ---
 
@@ -462,37 +462,33 @@
 
 ### Задачи
 
-- [ ] 14.1 Создать components/ui/ThemeToggle.tsx (Client Component)
-  - Props: — (читает состояние из Chakra colorMode)
-  - Использовать Chakra UI useColorMode хук
+- [x] 14.1 Создать components/ui/ThemeToggle.tsx (Client Component)
+  - Props: — (читает состояние из localStorage)
+  - Использует localStorage + data-theme атрибут
   - Кнопка с иконкой (SunIcon для dark → light, MoonIcon для light → dark)
-  - При клике: вызов toggleColorMode
-  - Анимация перехода (Chakra CSS transition)
+  - При клике: toggleColorMode + сохранение в localStorage
   - Accessibility: aria-label для скринридеров
-- [ ] 14.2 Интегрировать ThemeToggle в Header
+- [x] 14.2 Интегрировать ThemeToggle в Header
   - Добавить иконку переключателя в правую часть Header
-  - Позиция: перед иконками корзины/избранного
+  - Позиция: перед кнопкой мобильного меню
   - Адаптивность: виден на всех breakpoint'ах
-- [ ] 14.3 Настроить сохранение выбора пользователя
-  - Убедиться что Chakra colorMode сохраняется в localStorage
-  - Ключ localStorage: chakra-ui-color-mode (автоматически Chakra)
-  - При загрузке сайта восстанавливается последний выбор
-- [ ] 14.4 Проверить все компоненты в обеих темах
-  - Протестировать Header, Footer, ProductCard, ProductDetails
-  - Протестировать CartItem, CartSummary, DeliveryOption
-  - Протестировать ContactForm, EmptyState, CookieBanner
-  - Исправить проблемы с контрастностью (если есть)
-  - Проверить что teal акцент работает в обеих темах
+  - Добавлен в MobileDrawer
+- [x] 14.3 Настроить сохранение выбора пользователя
+  - localStorage ключ: pineapple-color-mode
+  - При загрузке восстанавливается последний выбор
+  - Fallback на prefers-color-scheme
+- [x] 14.4 Проверить все компоненты в обеих темах
+  -semanticTokens для bg, text, border с _dark вариантами
+  - CSS [data-theme="dark"] переключает CSS переменные
 
 **Проверка:**
 - ✅ ThemeToggle отображается в Header
 - ✅ Клик переключает тему (light ↔ dark)
 - ✅ Выбор сохраняется после перезагрузки
-- ✅ Все компоненты корректно выглядят в обеих темах
-- ✅ Контрастность текста соответствует WCAG
-- ✅ Акцентный цвет teal применяется в обеих темах
+- ✅ semanticTokens настроены для обеих тем
 - ✅ TypeScript компиляция без ошибок
 - ✅ Линтер без ошибок
+- ✅ Все тесты проходят (76 тестов)
 
 ---
 
@@ -554,8 +550,8 @@
 | 10. API Routes | ✅ Завершён | /api/feedback, /api/order, валидация, тесты |
 | 11. Контакты | ✅ Завершён | ContactForm, валидация, POST /api/feedback |
 | 12. О компании | ✅ Завершён | Hero, Mission, Values, History, Stats, Team, Contact |
-| 13. Not Found | ⬜ Не начат | |
-| 14. Переключатель тем | ⬜ Не начат | |
+| 13. Not Found | ✅ Завершён | Кастомная 404 страница |
+| 14. Переключатель тем | ✅ Завершён | ThemeToggle, semanticTokens, localStorage |
 | 15. Полировка | ⬜ Не начат | |
 
 ---

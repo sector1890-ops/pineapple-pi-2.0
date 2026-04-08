@@ -17,12 +17,52 @@ const config = defineConfig({
     semanticTokens: {
       colors: {
         bg: {
-          default: { value: "{colors.white}" },
-          muted: { value: "{colors.gray.50}" },
+          default: {
+            value: {
+              base: "{colors.white}",
+              _dark: "{colors.gray.900}",
+            },
+          },
+          muted: {
+            value: {
+              base: "{colors.gray.50}",
+              _dark: "{colors.gray.800}",
+            },
+          },
+          surface: {
+            value: {
+              base: "{colors.white}",
+              _dark: "{colors.gray.800}",
+            },
+          },
+          panel: {
+            value: {
+              base: "{colors.white}",
+              _dark: "{colors.gray.900}",
+            },
+          },
         },
         text: {
-          default: { value: "{colors.gray.900}" },
-          muted: { value: "{colors.gray.600}" },
+          default: {
+            value: {
+              base: "{colors.gray.900}",
+              _dark: "{colors.white}",
+            },
+          },
+          muted: {
+            value: {
+              base: "{colors.gray.600}",
+              _dark: "{colors.gray.400}",
+            },
+          },
+        },
+        border: {
+          default: {
+            value: {
+              base: "{colors.gray.200}",
+              _dark: "{colors.gray.700}",
+            },
+          },
         },
       },
       shadows: {

@@ -15,6 +15,7 @@ import {
 import { Menu, Monitor } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { useFavoriteStore } from "@/stores/favoriteStore";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Главная" },
@@ -122,8 +123,11 @@ export function Header({ onMenuClick }: HeaderProps) {
                 </Text>
               </Link>
             ))}
+
+            {/* Переключатель темы */}
+            <ThemeToggle />
           </HStack>
-        
+
           <IconButton
             display={{ base: "flex", md: "none" }}
             aria-label="Меню"

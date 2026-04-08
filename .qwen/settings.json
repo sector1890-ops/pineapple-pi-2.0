@@ -5,7 +5,8 @@
       "Bash(npm run *)",
       "Bash(timeout *)",
       "Bash(find *)",
-      "Bash(npx *)"
+      "Bash(npx *)",
+      "Bash(grep *)"
     ]
   },
   "$version": 3

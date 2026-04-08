@@ -10,23 +10,18 @@
 
 import { render, screen } from "@testing-library/react";
 import AboutPage from "./page";
+import type { ComponentProps, PropsWithChildren } from "react";
 
 // Мок Chakra UI компонентов
 jest.mock("@chakra-ui/react", () => ({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Box: ({ children, display, ...props }: Record<string, any>) => (
+  Box: ({ children, display, ...props }: PropsWithChildren<ComponentProps<"div">> & { display?: string }) => (
     <div {...props} style={display === "flex" ? { display: "flex" } : undefined}>{children}</div>
   ),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Container: ({ children }: Record<string, any>) => <div>{children}</div>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Heading: ({ children }: Record<string, any>) => <h2>{children}</h2>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Text: ({ children }: Record<string, any>) => <p>{children}</p>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  VStack: ({ children }: Record<string, any>) => <div>{children}</div>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  SimpleGrid: ({ children }: Record<string, any>) => <div>{children}</div>,
+  Container: ({ children }: PropsWithChildren<Record<string, unknown>>) => <div>{children}</div>,
+  Heading: ({ children }: PropsWithChildren<Record<string, unknown>>) => <h2>{children}</h2>,
+  Text: ({ children }: PropsWithChildren<Record<string, unknown>>) => <p>{children}</p>,
+  VStack: ({ children }: PropsWithChildren<Record<string, unknown>>) => <div>{children}</div>,
+  SimpleGrid: ({ children }: PropsWithChildren<Record<string, unknown>>) => <div>{children}</div>,
 }));
 
 jest.mock("@/data/about-company", () => ({
