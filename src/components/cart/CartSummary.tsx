@@ -62,9 +62,10 @@ export function CartSummary({
         mt={6}
         w="full"
         size="lg"
-        bg="teal.500"
+        bg="accent.default"
         color="white"
-        _hover={{ bg: "teal.600" }}
+        _hover={{ bg: "accent.hover" }}
+        _active={{ bg: "accent.active" }}
         onClick={onCheckout}
         loading={isLoading}
       >

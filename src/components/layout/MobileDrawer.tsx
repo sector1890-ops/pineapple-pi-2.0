@@ -104,9 +104,11 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
           px={3}
           pt={6}
           pb={4}
+          borderBottomWidth="1px"
+          borderColor="border.default"
         >
-          <Monitor size={20} color="var(--chakra-colors-teal-500)" />
-          <Text fontWeight="bold" color="teal.500">
+          <Monitor size={20} color="var(--chakra-colors-accent-default)" />
+          <Text fontWeight="bold" color="accent.default">
             Pineapple Pi
           </Text>
           <Box flex={1} />
@@ -132,7 +134,7 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                 variant="ghost"
                 justifyContent="flex-start"
                 width="full"
-                color={isActive(link.href) ? "teal.500" : "text.default"}
+                color={isActive(link.href) ? "accent.default" : "text.default"}
                 fontWeight={isActive(link.href) ? "semibold" : "medium"}
                 onClick={onClose}
                 py={3}
@@ -141,7 +143,12 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                   <HStack gap={2} flex={1} justifyContent="space-between">
                     <Text>Корзина</Text>
                     {displayCartCount > 0 && (
-                      <Badge bg="red.500" color="white" borderRadius="full" px={2}>
+                      <Badge
+                        bg="red.500"
+                        color="white"
+                        borderRadius="full"
+                        px={2}
+                      >
                         {displayCartCount}
                       </Badge>
                     )}
@@ -151,15 +158,20 @@ export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
                   <HStack gap={2} flex={1} justifyContent="space-between">
                     <Text>Избранное</Text>
                     {displayFavoritesCount > 0 && (
-                      <Badge bg="red.500" color="white" borderRadius="full" px={2}>
+                      <Badge
+                        bg="red.500"
+                        color="white"
+                        borderRadius="full"
+                        px={2}
+                      >
                         {displayFavoritesCount}
                       </Badge>
                     )}
                   </HStack>
                 )}
-                {link.href !== "/cart" && link.href !== "/favorites" && (
-                  link.label
-                )}
+                {link.href !== "/cart" &&
+                  link.href !== "/favorites" &&
+                  link.label}
               </Button>
             </Link>
           ))}

@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     description: "Каталог микрокомпьютеров для встраиваемых систем и IoT",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -49,6 +52,7 @@ export default function RootLayout({
       <body
         className="min-h-screen flex flex-col antialiased"
         suppressHydrationWarning
+        style={{ overflowX: "hidden" }}
       >
         <ClientShell>{children}</ClientShell>
       </body>

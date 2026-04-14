@@ -54,7 +54,7 @@ export function CookieBanner() {
           flexWrap={{ base: "wrap", md: "nowrap" }}
         >
           <Flex alignItems="center" gap={3} flex={1}>
-            <Cookie size={24} color="var(--chakra-colors-teal-500)" />
+            <Cookie size={24} color="var(--chakra-colors-accent-default)" />
             <Text fontSize="sm" color="text.muted">
               Мы используем файлы cookie для улучшения вашего опыта на сайте.
               Продолжая использовать сайт, вы соглашаетесь с нашей политикой

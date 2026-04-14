@@ -1,4 +1,12 @@
 import Link from "next/link";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Monitor, Mail, Phone, MapPin } from "lucide-react";
 
 const navLinks = [
@@ -19,89 +27,98 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      style={{
-        background: "var(--chakra-colors-gray-50, #f7f7f7)",
-        borderTop: "1px solid var(--chakra-colors-gray-200, #e2e8f0)",
-        marginTop: "auto",
-      }}
+    <Box
+      as="footer"
+      bg="bg.emphasized"
+      borderTopWidth="1px"
+      borderColor="border.default"
     >
-      <div
-        style={{
-          maxWidth: "80rem",
-          marginLeft: "auto",
-          marginRight: "auto",
-          padding: "2.5rem 1rem",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "2rem",
-          }}
+      <Container maxW="container.xl" py={10}>
+        <Box
+          display="grid"
+          gridTemplateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
+          gap={8}
         >
           {/* Навигация */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "flex-start" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Monitor size={20} color="var(--chakra-colors-teal-500, #319795)" />
-              <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#319795" }}>
+          <VStack alignItems="flex-start" gap={3}>
+            <Flex alignItems="center" gap={2}>
+              <Monitor size={20} color="var(--chakra-colors-accent-default)" />
+              <Text fontSize="sm" fontWeight={600} color="accent.default">
                 Pineapple Pi
-              </span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              </Text>
+            </Flex>
+            <VStack alignItems="flex-start" gap={2}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   style={{
-                    color: "#6b7280",
+                    color: "var(--chakra-colors-text-muted)",
                     fontSize: "0.875rem",
                     textDecoration: "none",
                     transition: "color 0.2s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#319795")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7280")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--chakra-colors-accent-default)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--chakra-colors-text-muted)")
+                  }
                 >
                   {link.label}
                 </Link>
               ))}
-            </div>
-          </div>
+            </VStack>
+          </VStack>
 
           {/* Контакты */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "flex-start" }}>
-            <h3 style={{ fontSize: "0.875rem", fontWeight: 600, margin: 0 }}>Контакты</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <VStack alignItems="flex-start" gap={3}>
+            <Heading size="sm" color="text.default">
+              Контакты
+            </Heading>
+            <VStack alignItems="flex-start"  gap={3} >
               {contacts.map((contact) => (
-                <div key={contact.label} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <contact.icon size={16} color="#319795" />
-                  <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-                    <span style={{ fontSize: "0.75rem", color: "#6b7280" }}>{contact.label}</span>
-                    <span style={{ fontSize: "0.875rem" }}>{contact.value}</span>
-                  </div>
-                </div>
+                <Flex key={contact.label} alignItems="flex-start" gap={2}>
+                  <Box w={4} flexShrink={0} pt={0.5}>
+                    <contact.icon size={16} color="var(--chakra-colors-accent-default)" />
+                  </Box>
+                  <Box>
+                    <Text fontSize="xs" color="text.muted">
+                      {contact.label}
+                    </Text>
+                    <Text fontSize="sm" color="text.default">
+                      {contact.value}
+                    </Text>
+                  </Box>
+                </Flex>
               ))}
-            </div>
-          </div>
+            </VStack>
+          </VStack>
 
           {/* О проекте */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "flex-start" }}>
-            <h3 style={{ fontSize: "0.875rem", fontWeight: 600, margin: 0 }}>О проекте</h3>
-            <p style={{ fontSize: "0.875rem", color: "#6b7280", margin: 0, lineHeight: 1.6 }}>
+          <VStack alignItems="flex-start" gap={3}>
+            <Heading size="sm" color="text.default">
+              О проекте
+            </Heading>
+            <Text fontSize="sm" color="text.muted" lineHeight={1.6}>
               Pineapple Pi — каталог микрокомпьютеров для встраиваемых систем,
               IoT и прототипирования. Компактные решения для разработчиков и
               инженеров.
-            </p>
-          </div>
-        </div>
+            </Text>
+          </VStack>
+        </Box>
 
-        <div style={{ marginTop: "2rem", marginBottom: "1rem", borderTop: "1px solid #e2e8f0" }} />
+        <Box
+          mt={8}
+          mb={4}
+          borderTopWidth="1px"
+          borderColor="border.default"
+        />
 
-        <p style={{ textAlign: "center", fontSize: "0.875rem", color: "#6b7280", margin: 0 }}>
+        <Text textAlign="center" fontSize="sm" color="text.muted">
           &copy; {currentYear} Pineapple Pi. Все права защищены.
-        </p>
-      </div>
-    </footer>
+        </Text>
+      </Container>
+    </Box>
   );
 }

@@ -42,13 +42,13 @@ export function EmptyState({
       {actionLabel && actionHref && (
         <Link href={actionHref}>
           <Button
-            bg="teal.500"
+            bg="accent.default"
             color="white"
             size="lg"
             mt={4}
             textDecoration="none"
             _hover={{
-              bg: "teal.600",
+              bg: "accent.hover",
               textDecoration: "none",
             }}
           >

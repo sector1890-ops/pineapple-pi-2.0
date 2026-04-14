@@ -79,7 +79,7 @@ export function ProductDetails({
               <Heading size="2xl" lineHeight="tight">
                 {product.title}
               </Heading>
-              <Text fontSize="2xl" fontWeight="bold" color="teal.600">
+              <Text fontSize="2xl" fontWeight="bold" color="accent.default">
                 {product.priceFormatted}
               </Text>
             </VStack>
@@ -132,9 +132,10 @@ export function ProductDetails({
                 width="32px"
                 height="32px"
                 minWidth="unset"
-                bg="teal.500"
+                bg="accent.default"
                 color="white"
-                _hover={{ bg: "teal.600" }}
+                _hover={{ bg: "accent.hover" }}
+                _active={{ bg: "accent.active" }}
                 fontSize="lg"
                 fontWeight="bold"
                 onClick={() => {
@@ -156,9 +157,10 @@ export function ProductDetails({
                 width="32px"
                 height="32px"
                 minWidth="unset"
-                bg="teal.500"
+                bg="accent.default"
                 color="white"
-                _hover={{ bg: "teal.600" }}
+                _hover={{ bg: "accent.hover" }}
+                _active={{ bg: "accent.active" }}
                 fontSize="lg"
                 fontWeight="bold"
                 onClick={() => {

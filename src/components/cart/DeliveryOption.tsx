@@ -20,8 +20,8 @@ export function DeliveryOption({ enabled, onToggle, price }: DeliveryOptionProps
       p={4}
       borderWidth="1px"
       borderRadius="md"
-      bg={enabled ? "teal.50" : "transparent"}
-      borderColor={enabled ? "teal.500" : "gray.200"}
+      bg={enabled ? "bg.muted" : "transparent"}
+      borderColor={enabled ? "accent.default" : "border.default"}
       transition="all 0.2s"
       cursor="pointer"
       onClick={() => onToggle(!enabled)}
@@ -33,8 +33,8 @@ export function DeliveryOption({ enabled, onToggle, price }: DeliveryOptionProps
           h={5}
           borderWidth="2px"
           borderRadius="sm"
-          borderColor={enabled ? "teal.500" : "gray.300"}
-          bg={enabled ? "teal.500" : "transparent"}
+          borderColor={enabled ? "accent.default" : "text.muted"}
+          bg={enabled ? "accent.default" : "transparent"}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -46,7 +46,7 @@ export function DeliveryOption({ enabled, onToggle, price }: DeliveryOptionProps
 
         <HStack gap={1}>
           <Text>Добавить доставку</Text>
-          <Text fontWeight="bold" color="teal.600">
+          <Text fontWeight="bold" color="accent.default">
             (+${price})
           </Text>
         </HStack>

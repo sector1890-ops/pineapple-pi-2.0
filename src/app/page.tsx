@@ -1,23 +1,35 @@
 import { getAllProducts } from "@/lib/products";
 import { HomePageClient } from "./HomePageClient";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import { HeroScene } from "@/components/hero/HeroScene";
 
 export default function Home() {
   const products = getAllProducts();
 
   return (
-    <Box py={8}>
-      <Container maxW="container.xl" mb={8}>
-        <Heading size="2xl" textAlign={{ base: "center", md: "left" }}>
-          Каталог микрокомпьютеров
-        </Heading>
-        <Text mt={2} color="text.muted" fontSize="lg">
-          Компактные решения для встраиваемых систем, IoT и прототипирования
-        </Text>
-      </Container>
+    <Box>
+      <HeroScene />
+
+      <Box
+        id="catalog"
+        py={8}
+        style={{ scrollMarginTop: "80px" }}
+        overflowX="hidden"
+      >
+        <Container maxW="container.xl" mb={{ base: 0, md: 4 }}>
+          <Heading size="2xl" textAlign="center">
+            Каталог микрокомпьютеров
+          </Heading>
+          <Text mt={2} color="text.muted" fontSize="lg" textAlign="center">
+            Компактные решения для встраиваемых систем, IoT и прототипирования
+          </Text>
+        </Container>
+      </Box>
 
       {products.length > 0 ? (
-        <HomePageClient products={products} />
+        <Container maxW="container.xl">
+          <HomePageClient products={products} />
+        </Container>
       ) : (
         <Container maxW="container.xl" py={16}>
           <Box textAlign="center">

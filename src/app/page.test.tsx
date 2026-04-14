@@ -28,6 +28,11 @@ jest.mock("./HomePageClient", () => ({
   )),
 }));
 
+// Мок для HeroScene (сложный компонент с SVG-анимацией, ломает Chakra-моки)
+jest.mock("@/components/hero/HeroScene", () => ({
+  HeroScene: jest.fn(() => <div data-testid="hero-scene" />),
+}));
+
 // Мок для Chakra UI компонентов
 jest.mock("@chakra-ui/react", () => ({
   Box: jest.fn(({ children, ...props }) => (

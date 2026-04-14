@@ -41,6 +41,12 @@ const config = defineConfig({
               _dark: "{colors.gray.900}",
             },
           },
+          emphasized: {
+            value: {
+              base: "{colors.gray.50}",
+              _dark: "{colors.gray.800}",
+            },
+          },
         },
         text: {
           default: {
@@ -61,6 +67,26 @@ const config = defineConfig({
             value: {
               base: "{colors.gray.200}",
               _dark: "{colors.gray.700}",
+            },
+          },
+        },
+        accent: {
+          default: {
+            value: {
+              base: "{colors.teal.500}",
+              _dark: "{colors.teal.400}",
+            },
+          },
+          hover: {
+            value: {
+              base: "{colors.teal.600}",
+              _dark: "{colors.teal.500}",
+            },
+          },
+          active: {
+            value: {
+              base: "{colors.teal.700}",
+              _dark: "{colors.teal.600}",
             },
           },
         },

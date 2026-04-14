@@ -36,10 +36,10 @@ export function ScrollToTop() {
       w={12}
       h={12}
       borderRadius="full"
-      bg="teal.500"
+      bg="accent.default"
       color="white"
-      _hover={{ bg: "teal.600" }}
-      _active={{ bg: "teal.700" }}
+      _hover={{ bg: "accent.hover" }}
+      _active={{ bg: "accent.active" }}
       shadow="md"
       onClick={handleClick}
     >

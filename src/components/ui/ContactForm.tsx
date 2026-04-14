@@ -105,9 +105,10 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         </Text>
         <Button
           w="fit-content"
-          bg="teal.500"
+          bg="accent.default"
           color="white"
-          _hover={{ bg: "teal.600" }}
+          _hover={{ bg: "accent.hover" }}
+          _active={{ bg: "accent.active" }}
           onClick={() => {
             setIsSubmitted(false);
           }}
@@ -191,9 +192,10 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           type="submit"
           w="fit-content"
           size="lg"
-          bg="teal.500"
+          bg="accent.default"
           color="white"
-          _hover={{ bg: "teal.600" }}
+          _hover={{ bg: "accent.hover" }}
+          _active={{ bg: "accent.active" }}
           loading={isSubmitting}
           mt={2}
         >

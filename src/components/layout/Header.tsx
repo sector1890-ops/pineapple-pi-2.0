@@ -68,11 +68,11 @@ export function Header({ onMenuClick }: HeaderProps) {
           {/* Логотип */}
           <Link href="/" passHref>
             <HStack gap={1} cursor="pointer" flexShrink={0}>
-              <Monitor size={24} color="var(--chakra-colors-teal-500)" />
+              <Monitor size={24} color="var(--chakra-colors-accent-default)" />
               <Text
                 fontSize={{ base: "lg", md: "xl" }}
                 fontWeight="bold"
-                color="teal.500"
+                color="accent.default"
                 letterSpacing="tight"
                 whiteSpace="nowrap"
               >
@@ -86,9 +86,9 @@ export function Header({ onMenuClick }: HeaderProps) {
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} passHref>
                 <Text
-                  color={isActive(link.href) ? "teal.500" : "text.default"}
+                  color={isActive(link.href) ? "accent.default" : "text.default"}
                   fontWeight={isActive(link.href) ? "semibold" : "medium"}
-                  _hover={{ color: "teal.500" }}
+                  _hover={{ color: "accent.default" }}
                   transition="color 0.2s"
                   cursor="pointer"
                 >

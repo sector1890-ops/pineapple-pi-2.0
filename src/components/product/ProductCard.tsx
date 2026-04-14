@@ -59,7 +59,7 @@ export function ProductCard({
           <Text
             fontSize="lg"
             fontWeight="bold"
-            _hover={{ color: "teal.500" }}
+            _hover={{ color: "accent.default" }}
             cursor="pointer"
             lineHeight="tight"
           >
@@ -72,17 +72,18 @@ export function ProductCard({
         </Text>
 
         <Flex justifyContent="space-between" alignItems="center" mt={2}>
-          <Text fontSize="lg" fontWeight="bold" color="teal.600">
+          <Text fontSize="lg" fontWeight="bold" color="accent.default">
             {product.priceFormatted}
           </Text>
 
           <IconButton
             aria-label="Добавить в корзину"
             variant="solid"
-            bg="teal.500"
+            bg="accent.default"
             color="white"
             size="sm"
-            _hover={{ bg: "teal.600" }}
+            _hover={{ bg: "accent.hover" }}
+            _active={{ bg: "accent.active" }}
             onClick={(e) => {
               e.stopPropagation();
               onAddToCart(product.id);
