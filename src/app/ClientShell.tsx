@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { ToastRenderer } from "./ToastRenderer";
 import { MobileDrawer } from "@/components/layout/MobileDrawer";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 interface ClientShellProps {
   children: React.ReactNode;
@@ -44,6 +45,7 @@ export function ClientShell({ children }: ClientShellProps) {
       <Footer />
       <CookieBanner />
       <ToastRenderer />
+      <ScrollToTop />
 
       <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </ChakraProvider>
